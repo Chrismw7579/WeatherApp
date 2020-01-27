@@ -1,0 +1,51 @@
+header {
+    background-color: black;
+    height: 60px;
+    color: white;
+
+}
+
+h1 {
+    text-align: center;
+    line-height: 60px;
+}
+
+#main {
+    position: relative;
+}
+
+#search {
+    left: 0px;
+    position: absolute;
+}
+
+#btn-search {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+}
+
+#forecast {
+    right: 0px;
+    position: absolute;
+    margin: 0 0 0 20px;
+}
+
+#city {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(63, 63, 63);
+    margin: 20px 0 20px 0;
+    border-radius: 5px;
+}
+
+.day {
+    background-color: rgb(13, 123, 226);
+    display: inline-block;
+    height: 240px;
+    width: 160px;
+    margin: 0 30px 0 0;
+    padding: 0 0 0 20px;
+    border-radius: 8px;
+    color: white;
+}
