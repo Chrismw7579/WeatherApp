@@ -23,6 +23,7 @@ h1 {
     position: absolute;
     height: 40px;
     width: 40px;
+    border-style: none;
 }
 
 #forecast {
@@ -37,6 +38,7 @@ h1 {
     border-color: rgb(63, 63, 63);
     margin: 20px 0 20px 0;
     border-radius: 5px;
+    padding: 0 0 0 5px;
 }
 
 .day {
@@ -48,4 +50,33 @@ h1 {
     padding: 0 0 0 20px;
     border-radius: 8px;
     color: white;
+}
+
+.previous {
+    border-style: solid;
+    border-width: 1px;
+    border-color:  rgb(63, 63, 63);
+    margin: 0;
+    line-height: 30px;
+    width: 100%;
+}
+
+#input {
+    height: 35px;
+    font-size: large;
+    margin: 0 0 10px 0;
+}
+
+#name {
+    display: inline;
+}
+
+#city-icon {
+    height: 32px;
+    width: 32px;
+    margin-top: 10px;
+}
+
+#h2-5day {
+    margin: 0 0 5px 0;
 }
