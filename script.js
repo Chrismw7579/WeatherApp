@@ -8,6 +8,7 @@ let UV = document.querySelector("#UV");
 let fiveDay = document.querySelectorAll(".day");
 let search = document.querySelector("#search");
 let cityIcon = document.querySelector("#city-icon");
+let lastSearch = '';
 
 let icons = {
     clouds: 'icons/png/cloudy.png',
@@ -27,7 +28,7 @@ Getcities();
 submit.addEventListener('click', function() {
     
     GetData(input.value);
-    
+    localStorage.setItem('last', input.value);
 });
 
 function GetData(city) {
@@ -80,7 +81,8 @@ function GetLocation(position) {
        if (localStorage.getItem(data.name) == null) {
             GetData(data.name);
        } else {
-            GetData(input.value);
+            GetData(localStorage.getItem('last'));
+            console.log(localStorage.getItem('last'));
        }
    })
 }
@@ -107,6 +109,7 @@ function DisplayCity(data) {
     localStorage.setItem(data.name, data.name);
     input.value = data.name;
     Getcities();
+    localStorage.setItem('last', data.name);
 }
 
 
@@ -122,13 +125,7 @@ function Getcities() {
         btn.setAttribute('data-city', keys[i]);
         
         btn.textContent = keys[i];
-        // btn.addEventListener('click', function() {
-
-        //     console.log(btn.getAttribute('data-city'));
-        //     GetData(btn.getAttribute('data-city'));
-            
-        // })
-        
+      
         list.appendChild(btn);
     } 
     let prev = document.getElementsByClassName('previous');
