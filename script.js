@@ -120,13 +120,16 @@ function Getcities() {
     list.innerHTML = '';
     keys = Object.keys(localStorage);
     for (var i  = 0; i < keys.length; i++){
-        btn = document.createElement("div");
-        btn.setAttribute('class', 'previous');
-        btn.setAttribute('data-city', keys[i]);
+        if(keys[i] != 'last') {
+            btn = document.createElement("div");
+            btn.setAttribute('class', 'previous');
+            btn.setAttribute('data-city', keys[i]);
+            
+            btn.textContent = keys[i];
+          
+            list.appendChild(btn);
+        }
         
-        btn.textContent = keys[i];
-      
-        list.appendChild(btn);
     } 
     let prev = document.getElementsByClassName('previous');
     createPreviousButtons(prev);
