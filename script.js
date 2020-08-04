@@ -29,6 +29,7 @@ submit.addEventListener('click', function() {
     
     GetData(input.value);
     localStorage.setItem('last', input.value);
+    input.value = '';
 });
 
 function GetData(city) {
@@ -107,7 +108,6 @@ function DisplayCity(data) {
     lat = data.coord.lat;
     lon = data.coord.lon;
     localStorage.setItem(data.name, data.name);
-    input.value = data.name;
     Getcities();
     localStorage.setItem('last', data.name);
 }
@@ -136,11 +136,11 @@ function Getcities() {
 }
 
 
-function createPreviousButtons(datas) {
+function createPreviousButtons(data) {
 
-    for (let index = 0; index < datas.length; index++) {
-        datas[index].addEventListener('click', function() {
-            GetData(datas[index].getAttribute('data-city')); 
+    for (let index = 0; index < data.length; index++) {
+        data[index].addEventListener('click', function() {
+            GetData(data[index].getAttribute('data-city')); 
         })
     }
 }
