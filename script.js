@@ -86,7 +86,6 @@ function GetLocation(position) {
             GetData(data.name);
        } else {
             GetData(localStorage.getItem('last'));
-            console.log(localStorage.getItem('last'));
        }
    })
 }
@@ -97,7 +96,6 @@ function DisplayUV(data) {
 
 
 function DisplayCity(data) {
-    console.log(data);
     var today = new Date();
     var dd = String(today.getDate());
     var mm = String(today.getMonth() + 1); 
