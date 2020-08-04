@@ -23,6 +23,7 @@ let apiKey = '7529f7be67780d5b335f0689ae25c356';
 let lat = 0;
 let lon = 0;
 
+// displays the previously searched cities
 Getcities();
 
 submit.addEventListener('click', function() {
@@ -32,6 +33,8 @@ submit.addEventListener('click', function() {
     input.value = '';
 });
 
+
+// Calls the api's 
 function GetData(city) {
 
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=imperial`;
@@ -92,6 +95,7 @@ function DisplayUV(data) {
     UV.textContent = "UV Index: " + data.value;
 }
 
+
 function DisplayCity(data) {
     console.log(data);
     var today = new Date();
@@ -113,7 +117,7 @@ function DisplayCity(data) {
 }
 
 
-
+// creates the buttons for the previously searched cities
 function Getcities() {
     
     let list = document.querySelector('#list');
@@ -135,7 +139,7 @@ function Getcities() {
     createPreviousButtons(prev);
 }
 
-
+// adds eventlisteners to all the left side buttons
 function createPreviousButtons(data) {
 
     for (let index = 0; index < data.length; index++) {
@@ -155,6 +159,8 @@ function DisplayFiveDay(data) {
     }
 }
 
+
+// Picks the weather icon based on weather discription
 function SetImage(data) {
     let image = '';
     let description = data.main;
