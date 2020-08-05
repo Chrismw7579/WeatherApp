@@ -5,7 +5,7 @@ let temp = document.querySelector("#temp");
 let humidity = document.querySelector("#humidity");
 let wind = document.querySelector("#wind");
 let UV = document.querySelector("#UV");
-let fiveDay = document.querySelectorAll(".day");
+let fiveDay = document.querySelector("#five-day");
 let search = document.querySelector("#search");
 let cityIcon = document.querySelector("#city-icon");
 let lastSearch = '';
@@ -23,8 +23,10 @@ let apiKey = '7529f7be67780d5b335f0689ae25c356';
 let lat = 0;
 let lon = 0;
 
+
 // displays the previously searched cities
 Getcities();
+
 
 submit.addEventListener('click', function() {
     
@@ -36,7 +38,7 @@ submit.addEventListener('click', function() {
 
 // Calls the api's 
 function GetData(city) {
-
+    
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=imperial`;
     fetch(url)
     .then(function(response) {
@@ -142,6 +144,7 @@ function createPreviousButtons(data) {
 
     for (let index = 0; index < data.length; index++) {
         data[index].addEventListener('click', function() {
+            fiveDay.innerHTML = '';
             GetData(data[index].getAttribute('data-city')); 
         })
     }
@@ -150,10 +153,29 @@ function createPreviousButtons(data) {
 function DisplayFiveDay(data) {
     
     for (var i = 0; i < data.list.length; i+=8) {
-        fiveDay[i / 8].querySelector(".date").textContent = data.list[i].dt_txt.split(" ")[0];
-        fiveDay[i / 8].querySelector(".temp").textContent = "Temp: " + data.list[i].main.temp + " \u00B0F";
-        fiveDay[i / 8].querySelector(".humid").textContent = "Humidity: " + data.list[i].main.humidity + "%";
-        fiveDay[i / 8].querySelector("img").setAttribute('src', SetImage(data.list[i].weather[0]));
+
+        card = document.createElement("span");
+        card.setAttribute('class', 'day');
+
+        date = document.createElement('h4');
+        icon = document.createElement('img');
+        temp = document.createElement('h4');
+        humid = document.createElement('h4');
+
+        
+        date.textContent = data.list[i].dt_txt.split(" ")[0];
+        icon.setAttribute('src', SetImage(data.list[i].weather[0]));
+        temp.textContent = "Temp: " + data.list[i].main.temp + " \u00B0F";
+        humid.textContent = "Humidity: " + data.list[i].main.humidity + "%";
+        
+        
+        card.appendChild(date);
+        card.appendChild(icon);
+        card.appendChild(temp);
+        card.appendChild(humid);
+
+        fiveDay.appendChild(card);
+
     }
 }
 
