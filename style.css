@@ -24,7 +24,7 @@ h1 {
     height: 40px;
     width: 40px;
     border-style: none;
-    border-radius: 50%;
+    border-radius: 20%;
 }
 
 #forecast {

@@ -29,7 +29,7 @@ Getcities();
 
 
 submit.addEventListener('click', function() {
-    
+    fiveDay.innerHTML = '';
     GetData(input.value);
     localStorage.setItem('last', input.value);
     input.value = '';
@@ -150,6 +150,7 @@ function createPreviousButtons(data) {
     }
 }
 
+
 function DisplayFiveDay(data) {
     
     for (var i = 0; i < data.list.length; i+=8) {
@@ -162,12 +163,10 @@ function DisplayFiveDay(data) {
         temp = document.createElement('h4');
         humid = document.createElement('h4');
 
-        
         date.textContent = data.list[i].dt_txt.split(" ")[0];
         icon.setAttribute('src', SetImage(data.list[i].weather[0]));
         temp.textContent = "Temp: " + data.list[i].main.temp + " \u00B0F";
         humid.textContent = "Humidity: " + data.list[i].main.humidity + "%";
-        
         
         card.appendChild(date);
         card.appendChild(icon);
@@ -175,7 +174,6 @@ function DisplayFiveDay(data) {
         card.appendChild(humid);
 
         fiveDay.appendChild(card);
-
     }
 }
 
